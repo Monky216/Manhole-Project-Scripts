@@ -42,3 +42,5 @@ Change the three lined comments in Scoring Script after Animation Boss Script is
 
 Correct answer buttons call CorrectAnswer() in Scoring Script\
 Incorrect answer buttons call IncorrectAnswer() in Scoring Script
+
+Both scripts have Restart() and needs to be called by another script, button, etc.
