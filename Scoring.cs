@@ -47,14 +47,12 @@ public class Scoring : MonoBehaviour
         GetComponent<AnimationBoss>().Q2 = chosenQuestions[1];
         GetComponent<AnimationBoss>().Q3 = chosenQuestions[2];
         GetComponent<AnimationBoss>().Q4 = chosenQuestions[3];
-        /// GetComponent<AnimationBoss>().Q5 = chosenQuestions[4];
 
         //give chosen questions to reset
         GetComponent<Reset>().Q1 = chosenQuestions[0];
         GetComponent<Reset>().Q2 = chosenQuestions[1];
         GetComponent<Reset>().Q3 = chosenQuestions[2];
         GetComponent<Reset>().Q4 = chosenQuestions[3];
-        /// GetComponent<Reset>().Q5 = chosenQuestions[4];
 
         //starts score text
         ScoringTime();
@@ -72,6 +70,11 @@ public class Scoring : MonoBehaviour
         ShuffleQuestions();
 
         correctCounter = 0;
+    }
+
+    public void StartQuestions()
+    {
+        chosenQuestions[0].SetActive(true);
     }
 
     public void CorrectAnswer()
@@ -98,12 +101,6 @@ public class Scoring : MonoBehaviour
             //start questions 4
             /// GetComponent<AnimationBoss>().Q3Delay();
             /// GetComponent<AnimationBoss>().Q3Correct();
-        }
-        else if (correctCounter == 4)
-        {
-            //start questions 5
-            /// GetComponent<AnimationBoss>().Q4Delay();
-            /// GetComponent<AnimationBoss>().Q4Correct();
         }
     }
 
@@ -138,15 +135,9 @@ public class Scoring : MonoBehaviour
             int Q4Score = chosenQuestions[3].GetComponent<Question>().currentQuestionPoints;
             Q4ScoreText.text = chosenQuestions[3].name + ": " + Q4Score;
 
-            //score five
-            TMP_Text Q5ScoreText = GameObject.Find("Q5 - Score").GetComponent<TextMeshProUGUI>();
-            /// int Q5Score = chosenQuestions[4].GetComponent<Question>().currentQuestionPoints;
-            /// Q5ScoreText.text = chosenQuestions[4].name + ": " + Q5Score;
-
             //score total
             TMP_Text totalScoreText = GameObject.Find("Total Score").GetComponent<TextMeshProUGUI>();
             int totalScore = Q1Score + Q2Score + Q3Score + Q4Score;
-            /// add " + Q5Score" to totalScore equation
             totalScoreText.text = "Total Score: " + totalScore;
         }
     }
